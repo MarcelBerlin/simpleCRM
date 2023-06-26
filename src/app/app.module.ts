@@ -47,7 +47,8 @@ import { environment } from 'src/environments/environment';
     FormsModule, 
     provideFirebaseApp(() => initializeApp(environment.firebase)),     
     provideFirestore(() => getFirestore()),
-    AngularFireModule   
+    AngularFireModule,
+     
 
   ],
   providers: [],

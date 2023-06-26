@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'simpleCRM';
-  firestore: Firestore = inject(Firestore)
-  items$: Observable<any[]>;
+  
 
 
   constructor() {    
-    const aCollection = collection(this.firestore, 'items')
-    this.items$ = collectionData(aCollection);
+    
   }
 
   ngOnInit() {
