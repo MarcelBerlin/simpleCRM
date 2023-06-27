@@ -9,30 +9,27 @@ import { Observable } from 'rxjs';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
-
 })
-
 export class UserComponent implements OnInit {
 
   user = new User();
-  items$: Observable<any[]>; 
+  items$: Observable<any[]>;
   allUsers = [];
 
   constructor(public dialog: MatDialog, private firestore: Firestore) { }
 
   ngOnInit(): void {
     const aCollection = collection(this.firestore, 'users');
-    this.items$ = collectionData(aCollection);
+    this.items$ = collectionData(aCollection, { idField: 'id' });
 
     this.items$.subscribe(data => {
       this.allUsers = data;
       console.log('Received data:', data);
     });
-
   }
 
   openDialog() {
-    this.dialog.open(DialogAddUserComponent)
+    this.dialog.open(DialogAddUserComponent);
   }
-
+ 
 }
