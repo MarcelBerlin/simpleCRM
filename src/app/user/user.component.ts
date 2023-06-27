@@ -23,8 +23,7 @@ export class UserComponent implements OnInit {
     this.items$ = collectionData(aCollection, { idField: 'id' });
 
     this.items$.subscribe(data => {
-      this.allUsers = data;
-      console.log('Received data:', data);
+      this.allUsers = data;      
     });
   }
 
