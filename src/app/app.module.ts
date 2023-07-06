@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,12 +37,13 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
     DialogAddUserComponent,
     UserDetailComponent,
     DialogEditUserComponent,
-    DialogEditAddressComponent
+    DialogEditAddressComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NoopAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
@@ -52,7 +53,7 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatNativeDateModule,   
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),

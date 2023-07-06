@@ -35,7 +35,7 @@ export class DialogAddUserComponent implements OnInit {
       console.log('Current user is', docRef.id);
     } catch (error) {
       console.error('Error adding user', error);
-    }
+    }    
   }
 
   ngOnInit(): void {

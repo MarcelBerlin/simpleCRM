@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
-import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 
@@ -13,17 +12,17 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss'],
- 
+
 })
 export class UserDetailComponent implements OnInit {
 
-  userID = '';  
+  userID = '';
   user: User = new User();
   items$: Observable<any[]>;
 
-  constructor (
-    private route: ActivatedRoute, 
-    private firestore: Firestore, 
+  constructor(
+    private route: ActivatedRoute,
+    private firestore: Firestore,
     public dialog: MatDialog) { }
 
 
@@ -45,12 +44,20 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  
+
   editAddressMenu() {
-    this.dialog.open(DialogEditAddressComponent);
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userID = this.userID;
+    // die Methode "new User(this.user.toJSON())" sorgt dafür, dass wir eine Kopie von unserem Nutzer erstellen und die Daten nicht auch dann gespeichert werden sobald wir das Dialog Fenster abbrechen!
+
   }
 
   editUserMenu() {
-    this.dialog.open(DialogEditUserComponent);
+    const dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userID = this.userID;
+    // die Methode "new User(this.user.toJSON())" sorgt dafür, dass wir eine Kopie von unserem Nutzer erstellen und die Daten nicht auch dann gespeichert werden sobald wir das Dialog Fenster abbrechen!
+
   }
 }
